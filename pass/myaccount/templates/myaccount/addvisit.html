@@ -1,0 +1,16 @@
+
+<h1>Add Visit for {{ username }}</h1>
+
+
+<form action="{% url 'myaccount:new_visit' %}" method="post">
+    {% csrf_token %}
+
+    <br> doctor's first name : <input type="text" name="doctor_first_name">
+    <br> doctor's last name : <input type="text"  name="doctor_last_name">
+    <br> hospital : <input type="text"  name="hospital">
+    <br> date of visit: <input type="date" name="date_visit">
+    <br> doctor's note: <input type="textarea" name="doctor_note">
+
+    <input type="hidden" value="first note" name="edit_note">
+    <br><input type="submit" value="Submit">
+</form>

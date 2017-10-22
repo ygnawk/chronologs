@@ -1,0 +1,28 @@
+
+{% for entry in visit.entry_set.all %}
+
+    <br>    Created: {{ entry.created }} 
+    <br>    Doctor: {{ entry.doctor_first_name }} {{ entry.doctor_last_name }}
+    <br>    Hospital: {{ entry.hospital }} 
+    <br>    Date: {{ entry.date_visit }}
+    <br>    Diagnosis: {{ entry.doctor_note }}
+    <br>    Note: {{ entry.edit_note }}
+    <br>    - Medications
+    <br>        {% for med in entry.medication_set.all %} 
+    <br>
+    <br>            Identification: {{ med.identification }}
+    <br>            Name: {{ med.medication_name }}
+    <br>            Description: {{ med.description }}
+    <br>            Type: {{ med.medication_type }}
+                {% endfor %}
+    <form action="{% url 'myaccount:edit_entry' %}" method="get">
+        <input type='hidden' name="visit_id" value="{{ visit.id }}" />
+        <input type="submit" value="Edit Entry">
+    </form>
+
+    <form action="{% url 'myaccount:show_entry' %}" method="get">
+        <input type='hidden' name="visit_id" value="{{ visit.id }}" />
+        <input type="submit" value="Show All Edits">
+    </form>
+
+{% endfor %}

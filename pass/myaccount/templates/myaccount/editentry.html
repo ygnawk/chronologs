@@ -1,0 +1,17 @@
+
+<h1>Entry Edit for {{ username }}</h1>
+
+
+<form action="{% url 'myaccount:make_entry' %}" method="post">
+    {% csrf_token %}
+
+    <br> doctor's first name : <input type="text" name="doctor_first_name" value="{{ entry.doctor_first_name }}">
+    <br> doctor's last name : <input type="text"  name="doctor_last_name" value="{{ entry.doctor_last_name }}">
+    <br> hospital : <input type="text"  name="hospital" value="{{ entry.hospital }}">
+    <br> date of visit: <input type="date" name="date_visit" value="{{ entry.date_visit }}">
+    <br> edit note: <input type="textarea" name="edit_note" value="">
+    <br> doctor's note: <input type="textarea" name="doctor_note" value="{{ entry.doctor_note }}">
+
+    <input type="hidden" value="{{ visit_id }}" name="visit_id">
+    <br><input type="submit" value="Submit">
+</form>
